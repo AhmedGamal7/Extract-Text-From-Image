@@ -11,10 +11,11 @@ def main():
     if uploaded_image is not None:
         image = Image.open(uploaded_image)
         st.image(image, caption='Uploaded Image', use_column_width=True)
-
-        text = pytesseract.image_to_string(image,lang=language)
-        st.header("Extracted Text")
-        st.write(text)
+        
+        if st.button("Extract Text"):
+            text = pytesseract.image_to_string(image,lang=language)
+            st.header("Extracted Text")
+            st.write(text)
 
 if __name__ == "__main__":
     main()
